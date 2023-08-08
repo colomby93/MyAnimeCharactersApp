@@ -24,18 +24,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.jhonatanOrtiz.myanimecharactersapp.model.Anime
 import com.jhonatanOrtiz.myanimecharactersapp.ui.theme.LightBlack
 
 
 @Composable
-
-fun AnimeList() {
+fun AnimeList(navController: NavHostController) {
     LazyColumn {
-        items(getAnimes()) { anime ->
+        items(getAnime()) { anime ->
             AnimesItem(anime = anime)
         }
-
     }
 
 }
@@ -44,7 +43,7 @@ fun AnimeList() {
 @Composable
 fun AnimesItem(anime: Anime) {
     Card(
-        onClick = { },
+        onClick = {  },
         modifier = Modifier
             .height(150.dp)
             .fillMaxWidth()
@@ -71,18 +70,15 @@ fun AnimesItem(anime: Anime) {
                 fontSize = 30.sp
 
             )
-
         }
-
     }
 }
-
-fun getAnimes(): List<Anime> {
+fun getAnime(): List<Anime> {
     return listOf(
         Anime("One piece", R.drawable.ic_one_piece_1),
         Anime("naruto", R.drawable.ic_naruto),
         Anime("dragon ball", R.drawable.ic_dragon_ball)
     )
-
 }
+
 
