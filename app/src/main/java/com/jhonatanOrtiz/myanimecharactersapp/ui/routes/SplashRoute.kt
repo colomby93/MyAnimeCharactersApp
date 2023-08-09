@@ -1,5 +1,4 @@
-package com.jhonatanOrtiz.myanimecharactersapp.ui.theme
-
+package com.jhonatanOrtiz.myanimecharactersapp.ui.routes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,18 +8,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 
 @Composable
-fun Start(navController: NavHostController) {
+fun SplashRoute(onNavigate: () -> Unit) {
+    Splash(onNavigate)
+}
+
+@Composable
+fun Splash(onNavigate: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { navController.navigate("AnimeList")}) {
-            Text(text = "Star App")
+        Button(onClick = { onNavigate() }) {
+            Text(text = "Start App")
         }
     }
-
 }

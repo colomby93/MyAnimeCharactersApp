@@ -1,4 +1,4 @@
-package com.jhonatanOrtiz.myanimecharactersapp
+package com.jhonatanOrtiz.myanimecharactersapp.ui.routes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,13 +24,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import com.jhonatanOrtiz.myanimecharactersapp.model.Characters
+import com.jhonatanOrtiz.myanimecharactersapp.R
+import com.jhonatanOrtiz.myanimecharactersapp.model.Character
 
 @Composable
-fun Characters(navController: NavHostController) {
+fun AnimeCharactersRoute(animeId: String) {
+    AnimeCharacters(animeId = animeId)
+}
+
+@Composable
+fun AnimeCharacters(animeId: String) {
     Column(
-        modifier = Modifier.background(Color.Black),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -41,8 +48,8 @@ fun Characters(navController: NavHostController) {
             color = Color.White
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(getCharacters()) { characters ->
-                CharactersItem(characters = characters)
+            items(getCharacters(animeId)) { characters ->
+                CharactersItem(character = characters)
             }
         }
     }
@@ -50,13 +57,12 @@ fun Characters(navController: NavHostController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CharactersItem(characters: Characters) {
+fun CharactersItem(character: Character) {
     Card(
         onClick = { },
         modifier = Modifier
             .height(150.dp)
             .fillMaxWidth()
-            .background(color = Color.Black)
             .padding(start = 4.dp, top = 8.dp)
     ) {
         Row(
@@ -68,12 +74,12 @@ fun CharactersItem(characters: Characters) {
                 modifier = Modifier
                     .width(150.dp)
                     .fillMaxHeight(),
-                painter = painterResource(id = characters.photo),
+                painter = painterResource(id = character.picture),
                 contentDescription = "one piece",
                 contentScale = ContentScale.Fit
             )
             Text(
-                text = characters.nameCharacters,
+                text = character.name,
                 modifier = Modifier
                     .align(alignment = Alignment.CenterVertically)
                     .padding(10.dp),
@@ -86,18 +92,33 @@ fun CharactersItem(characters: Characters) {
 }
 
 
-fun getCharacters(): List<Characters> {
-    return listOf(
-        Characters("Luffy", R.drawable.ic_luffy),
-        Characters("Zoro Ronoa", R.drawable.ic_zoro),
-        Characters("Nami", R.drawable.ic_nami),
-        Characters("Usopp", R.drawable.ic_ussop),
-        Characters("Sanji", R.drawable.ic_sanji),
-        Characters("Chopper", R.drawable.ic_chopper),
-        Characters("Nico Robin", R.drawable.ic_robin),
-        Characters("Franky", R.drawable.ic_franky),
-        Characters("Brook", R.drawable.ic_brook),
-        Characters("Jinbe", R.drawable.ic_jinbe),
-        Characters("Nefertary Vivi", R.drawable.ic_nefertary_vivi),
-    )
+fun getCharacters(animeId: String): List<Character> {
+    return when (animeId) {
+        "0" -> {
+            listOf(
+                Character("Luffy", R.drawable.ic_luffy),
+                Character("Zoro Ronoa", R.drawable.ic_zoro),
+                Character("Nami", R.drawable.ic_nami),
+                Character("Usopp", R.drawable.ic_ussop),
+                Character("Sanji", R.drawable.ic_sanji),
+                Character("Chopper", R.drawable.ic_chopper),
+                Character("Nico Robin", R.drawable.ic_robin),
+                Character("Franky", R.drawable.ic_franky),
+                Character("Brook", R.drawable.ic_brook),
+                Character("Jinbe", R.drawable.ic_jinbe),
+                Character("Nefertary Vivi", R.drawable.ic_nefertary_vivi),
+            )
+        }
+
+        "1" -> {
+            listOf(
+                Character("Naruto", R.drawable.ic_luffy),
+                Character("Sakura", R.drawable.ic_zoro),
+            )
+        }
+
+        else -> {
+            listOf()
+        }
+    }
 }
