@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jhonatanOrtiz.myanimecharactersapp.R
@@ -36,9 +37,11 @@ fun AnimesRoute(onAnimeClicked: (Anime) -> Unit) {
 
 @Composable
 fun Animes(onAnimeClicked: (Anime) -> Unit) {
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Black)) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+    ) {
         items(getAnime()) { anime ->
             AnimesItem(
                 anime = anime,
@@ -90,4 +93,15 @@ fun getAnime(): List<Anime> {
     )
 }
 
+@Preview
+@Composable
+fun AnimesPreview() {
+    Animes(onAnimeClicked = {})
+}
 
+
+@Preview
+@Composable
+fun AnimeItemPreview() {
+    AnimesItem(anime = Anime(0, "Test", R.drawable.ic_one_piece_1), onAnimeClicked = {})
+}
