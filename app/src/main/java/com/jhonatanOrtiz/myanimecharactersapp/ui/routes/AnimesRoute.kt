@@ -95,13 +95,13 @@ fun getAnime(): List<Anime> {
 
 @Preview
 @Composable
-fun AnimesPreview() {
+private fun AnimesPreview() {
     Animes(onAnimeClicked = {})
 }
 
 
 @Preview
 @Composable
-fun AnimeItemPreview() {
+private fun AnimeItemPreview() {
     AnimesItem(anime = Anime(0, "Test", R.drawable.ic_one_piece_1), onAnimeClicked = {})
 }
