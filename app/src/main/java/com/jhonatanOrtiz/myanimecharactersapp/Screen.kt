@@ -2,6 +2,7 @@ package com.jhonatanOrtiz.myanimecharactersapp
 
 
 const val ANIME_ID_KEY = "anime_id"
+
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")
     object Animes : Screen("animes")
