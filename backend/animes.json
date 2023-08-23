@@ -1,0 +1,20 @@
+{
+	"animes": [
+		{
+			"id": 0,
+			"name": "One piece",
+			"picture": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2018/08/one-piece_0.jpg?tf=3840x"
+		},
+		{
+			"id": 1,
+			"name": "Naruto",
+			"picture": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/08/naruto-naruto-uzumaki-2425679.jpg?tf=3840x"
+		},
+		{
+			"id": 2,
+			"name": "Dragon ball",
+			"picture": "https://img2.rtve.es/i/?w=1600&i=1657019155649.jpg"}
+
+	]
+
+}
